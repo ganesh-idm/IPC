@@ -860,7 +860,7 @@ pingfederate-engine:
   envs:
     PF_ADMIN_PORT: "9999"
     SERVER_PROFILE_URL: https://github.com/ganesh-idm/IPC.git
-    SERVER_PROFILE_PATH: server-profiles/baseline/pingfederate
+    SERVER_PROFILE_PATH: baseline/pingfederate
 
   #############################################################
   # Horizontal Pod Autoscaling
@@ -1066,7 +1066,7 @@ pingdirectory:
   envs:
     MAKELDIF_USERS: "20000"
     SERVER_PROFILE_URL: https://github.com/ganesh-idm/IPC.git
-    SERVER_PROFILE_PATH: server-profiles/baseline/pingdirectory
+    SERVER_PROFILE_PATH: baseline/pingdirectory
 
   services:
     ldap:
@@ -1589,7 +1589,7 @@ pingcentral:
 # @default  false
 #############################################################
 pingdataconsole:
-  enabled: false
+  enabled: true
   name: pingdataconsole
   image:
     name: pingdataconsole
