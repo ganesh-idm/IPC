@@ -560,8 +560,10 @@ global:
       livenessProbe:
         exec:
           command:
+            - /bin/sh
+            - -c
             - /opt/liveness.sh
-        initialDelaySeconds: 30
+        initialDelaySeconds: 200
         periodSeconds: 30
         timeoutSeconds: 5
         successThreshold: 1
@@ -569,19 +571,25 @@ global:
       readinessProbe:
         exec:
           command:
+            - /bin/sh
+            - -c
             - /opt/readiness.sh
-        initialDelaySeconds: 30
-        periodSeconds: 5
+        initialDelaySeconds: 200
+        periodSeconds: 30
         timeoutSeconds: 5
         successThreshold: 1
         failureThreshold: 4
       startupProbe:
         exec:
           command:
+            - /bin/sh
+            - -c
             - /opt/liveness.sh
-        periodSeconds: 10
+        initialDelaySeconds: 200
+        periodSeconds: 30
         timeoutSeconds: 5
-        failureThreshold: 90
+        failureThreshold: 300
+
 
   ############################################################
   # @section Other global defaults
@@ -777,10 +785,10 @@ pingfederate-admin:
   # Example: Pulling in a secret (called pingfederate-license) into container
   #          mounting the name (license) value into a file (/opt/in/.../pingfederate.lic)
   #
-  # secretVolumes:
+  #secretVolumes:
   #   pingfederate-license:
   #     items:
-  #       license: /opt/in/instance/server/default/conf/pingfederate.lic
+  #       pingfederate.lic: /opt/in/instance/server/default/conf/pingfederate.lic
 
   # Example: Pulling in a configMap (called pingfederate-props) into container
   #          mounting the name (pf-props) value into a file (/opt/in/.../pingfederate.properties)
@@ -843,6 +851,11 @@ pingfederate-engine:
       pingfederate-admin:
         service: https
         timeoutSeconds: 300
+
+#  secretVolumes:
+#     pingfederate-license:
+#       items:
+#         pingfederate.lic: /opt/in/instance/server/default/conf/pingfederate.lic
 
   envs:
     PF_ADMIN_PORT: "9999"
@@ -983,13 +996,13 @@ pingdirectory:
     jobspec: {}
     image: bitnami/kubectl:latest
     args: []
-  enabled: false
+  enabled: true
   name: pingdirectory
   image:
     name: pingdirectory
 
   container:
-    replicaCount: 1
+    replicaCount: 2
     resources:
       requests:
         cpu: 50m
@@ -1002,11 +1015,11 @@ pingdirectory:
 
     probes:
       readinessProbe:
-        periodSeconds: 30
+        periodSeconds: 200
         failureThreshold: 4
       startupProbe:
-        periodSeconds: 10
-        failureThreshold: 180
+        periodSeconds: 30
+        failureThreshold: 300
 
     # Example affinity for typical directory installation
     #
@@ -1044,6 +1057,11 @@ pingdirectory:
               resources:
                 requests:
                   storage: 8Gi
+
+#  secretVolumes:
+#     pingdirectory-license:
+#       items:
+#         PingDirectory.lic: /opt/staging/pd.profile/server-root/pre-setup/PingDirectory.lic
 
   envs:
     MAKELDIF_USERS: "20000"
@@ -1418,7 +1436,7 @@ pingdatagovernancepap:
 # @default  false
 #############################################################
 pingaccess-admin:
-  enabled: false
+  enabled: true
   name: pingaccess-admin
   image:
     name: pingaccess
@@ -1434,6 +1452,11 @@ pingaccess-admin:
       limits:
         cpu: 2
         memory: 4Gi
+
+#  secretVolumes:
+#     pingaccess-license:
+#       items:
+#         pingaccess.lic: /opt/in/instance/conf/pingaccess.lic
 
   # Example: If PingAccess Admin relies on pingfederate-admin for AuthN
   #          Creates init container wait-for on pingfederate-admin https service
@@ -1475,7 +1498,7 @@ pingaccess-admin:
 # @default  false
 #############################################################
 pingaccess-engine:
-  enabled: false
+  enabled: true
   name: pingaccess-engine
   image:
     name: pingaccess
@@ -1492,6 +1515,11 @@ pingaccess-engine:
       pingaccess-admin:
         service: https
         timeoutSeconds: 300
+
+#  secretVolumes:
+#     pingaccess-license:
+#       items:
+#         pingaccess.lic: /opt/in/instance/conf/pingaccess.lic
 
   services:
     https:
