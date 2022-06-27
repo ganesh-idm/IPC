@@ -762,7 +762,7 @@ pingfederate-admin:
 
   envs:
     SERVER_PROFILE_URL: https://github.com/ganesh-idm/IPC.git
-    SERVER_PROFILE_PATH: server-profiles/baseline/pingfederate
+    SERVER_PROFILE_PATH: baseline/pingfederate
 
   # Example: If PingFederate Admin relies on pingdirectory for AuthN
   #          Creates init container wait-for on pingdirectory ldaps service
@@ -1047,6 +1047,8 @@ pingdirectory:
 
   envs:
     MAKELDIF_USERS: "20000"
+    SERVER_PROFILE_URL: https://github.com/ganesh-idm/IPC.git
+    SERVER_PROFILE_PATH: server-profiles/baseline/pingdirectory
 
   services:
     ldap:
