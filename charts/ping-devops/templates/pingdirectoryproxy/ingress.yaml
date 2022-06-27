@@ -1,8 +1,0 @@
-{{- if (merge (index .Values "pingdirectoryproxy") .Values.global).ingress.enabled }}
-{{- include "pinglib.ingress" (list . "pingdirectoryproxy") -}}
-{{- end -}}
-
-
-
-{{- define "pingdirectoryproxy.ingress" -}}
-{{- end -}}

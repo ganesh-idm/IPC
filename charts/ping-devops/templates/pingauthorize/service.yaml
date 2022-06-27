@@ -1,6 +1,0 @@
-{{- include "pinglib.service" (list . "pingauthorize") -}}
-
-
-
-{{- define "pingauthorize.service" -}}
-{{- end -}}

@@ -1,6 +1,0 @@
-{{- include "pinglib.service" (list . "pingdirectoryproxy") -}}
-
-
-
-{{- define "pingdirectoryproxy.service" -}}
-{{- end -}}

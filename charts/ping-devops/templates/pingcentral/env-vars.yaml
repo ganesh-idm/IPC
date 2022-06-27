@@ -1,6 +1,0 @@
-{{- include "pinglib.env-vars" (list . "pingcentral") -}}
-
-
-
-{{- define "pingcentral.env-vars" -}}
-{{- end -}}
