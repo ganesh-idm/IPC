@@ -3,14 +3,14 @@ entries:
   ping-devops:
   - apiVersion: v2
     appVersion: "2205"
-    created: "2022-06-27T15:42:31.8317021+05:30"
-    description: Ping Identity helm charts - 06/02/22
-    digest: 70c95836458a891c0fb3413401b12aef522ec2a60852b8a4254fa3e68f521590
+    created: "2022-06-27T15:47:36.8299764+05:30"
+    description: LikeMinds helm charts - 06/02/22
+    digest: fa22280499e27dbc18a8bee44bab4af2a4503f67ae385e93afe24d9896ba0aae
     home: https://helm.pingidentity.com/
     icon: https://helm.pingidentity.com/img/logos/ping.png
     name: ping-devops
     type: application
     urls:
-    - https://ganesh-idm.github.io/IPC/ping-devops-0.9.2.tgz
-    version: 0.9.2
-generated: "2022-06-27T15:42:31.8254328+05:30"
+    - https://ganesh-idm.github.io/IPC/ping-devops-0.1.1.tgz
+    version: 0.1.1
+generated: "2022-06-27T15:47:36.8259872+05:30"
