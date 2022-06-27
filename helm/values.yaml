@@ -199,7 +199,7 @@ global:
     repository: 880231441250.dkr.ecr.ap-southeast-1.amazonaws.com
     repositoryFqn:
     name:
-    tag: "2205"
+    tag: "latest"
     pullPolicy: IfNotPresent
 
   ############################################################
