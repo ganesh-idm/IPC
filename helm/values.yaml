@@ -1498,7 +1498,7 @@ pingaccess-admin:
 # @default  false
 #############################################################
 pingaccess-engine:
-  enabled: true
+  enabled: false
   name: pingaccess-engine
   image:
     name: pingaccess
